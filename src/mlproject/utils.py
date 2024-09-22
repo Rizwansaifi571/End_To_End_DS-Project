@@ -1,47 +1,44 @@
-import os 
+import os
 import sys
-from mlproject.exception import CustomException  # Custom exception for error handling
-from mlproject.logger import logging  # Logger for tracking events
-import pandas as pd  # Data manipulation library
-from dotenv import load_dotenv  # Library to load environment variables from a .env file
-import pymysql  # MySQL database adapter for Python
+from mlproject.exception import CustomException
+from mlproject.logger import logging
+import pandas as pd
+from dotenv import load_dotenv
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import r2_score
+import pymysql
 
 import pickle
 import numpy as np
 
-# Load environment variables from a .env file
 load_dotenv()
 
-# Retrieve database connection parameters from environment variables
-host = os.getenv("host")  # Database host
-user = os.getenv("user")  # Database user
-password = os.getenv("password")  # Database password
-db = os.getenv('db')  # Database name
+host=os.getenv("host")
+user=os.getenv("user")
+password=os.getenv("password")
+db=os.getenv('db')
+
+
 
 def read_sql_data():
-    logging.info("Reading SQL database started")  # Log the start of the data reading process
+    logging.info("Reading SQL database started")
     try:
-        # Establish connection to the MySQL database
-        mydb = pymysql.connect(
-            host=host, 
-            user=user, 
-            password=password, 
+        mydb=pymysql.connect(
+            host=host,
+            user=user,
+            password=password,
             db=db
         )
-        logging.info("Connection established successfully")
-
-        # Execute SQL query to read data from the 'students' table into a DataFrame
-        df = pd.read_sql_query('SELECT * FROM students', mydb)
-
-        # Print the first few rows of the DataFrame for verification
+        logging.info("Connection Established",mydb)
+        df=pd.read_sql_query('Select * from students',mydb)
         print(df.head())
 
-        return df  # Return the DataFrame containing the queried data
-    
-    except Exception as ex:
-        # Raise a custom exception if any error occurs during the process
-        raise CustomException(ex)
+        return df
 
+
+
+    except Exception as ex:
+        raise CustomException(ex)
     
 def save_object(file_path, obj):
     try:
@@ -51,6 +48,37 @@ def save_object(file_path, obj):
 
         with open(file_path, "wb") as file_obj:
             pickle.dump(obj, file_obj)
+
+    except Exception as e:
+        raise CustomException(e, sys)
+
+def evaluate_models(X_train, y_train,X_test,y_test,models,param):
+    try:
+        report = {}
+
+        for i in range(len(list(models))):
+            model = list(models.values())[i]
+            para=param[list(models.keys())[i]]
+
+            gs = GridSearchCV(model,para,cv=3)
+            gs.fit(X_train,y_train)
+
+            model.set_params(**gs.best_params_)
+            model.fit(X_train,y_train)
+
+            #model.fit(X_train, y_train)  # Train model
+
+            y_train_pred = model.predict(X_train)
+
+            y_test_pred = model.predict(X_test)
+
+            train_model_score = r2_score(y_train, y_train_pred)
+
+            test_model_score = r2_score(y_test, y_test_pred)
+
+            report[list(models.keys())[i]] = test_model_score
+
+        return report
 
     except Exception as e:
         raise CustomException(e, sys)
