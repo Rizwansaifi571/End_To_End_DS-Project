@@ -6,7 +6,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
-project_name = 'End_To_End_Project'
+project_name = 'mlproject'
 
 list_of_file = [
     f"src/{project_name}/__init__.py", 
