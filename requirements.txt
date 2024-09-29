@@ -8,4 +8,7 @@ seaborn
 catboost
 xgboost
 mlflow
+matplotlib
+Flask
+
 # -e .
