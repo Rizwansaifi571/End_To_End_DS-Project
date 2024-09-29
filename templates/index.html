@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        .hero {
+            background: #007bff;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+        }
+
+        .features {
+            padding: 60px 0;
+        }
+
+        .feature-item {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+    <title>Student Exam Performance Indicator</title>
+</head>
+
+<body>
+    <header class="hero">
+        <div class="container">
+            <h1>Welcome to the Student Exam Performance Indicator</h1>
+            <p>Predict your academic success with our easy-to-use tool.</p>
+            <a href="{{ url_for('predict_datapoint') }}" class="btn btn-light btn-lg">Start Predicting</a>
+        </div>
+    </header>
+
+    <div class="container features">
+        <h2 class="text-center mb-4">Key Features</h2>
+        <div class="row">
+            <div class="col-md-4 feature-item">
+                <h3>Comprehensive Data Input</h3>
+                <p>Input various parameters such as gender, ethnicity, parental education level, and more.</p>
+            </div>
+            <div class="col-md-4 feature-item">
+                <h3>Accurate Predictions</h3>
+                <p>Our model utilizes advanced algorithms to provide accurate exam performance predictions.</p>
+            </div>
+            <div class="col-md-4 feature-item">
+                <h3>User-Friendly Interface</h3>
+                <p>Enjoy a clean and intuitive interface designed for seamless user experience.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Student Exam Performance Indicator. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
