@@ -7,6 +7,12 @@
 
 Welcome to the **Student Performance Indicator** project! 🎉 This end-to-end data science application predicts students' marks using advanced machine learning techniques, providing valuable insights for improving educational outcomes. 🚀
 
+
+
+## 🌐 Live Demo
+
+Experience the application live at 👉 [marks-predictor-lttt.onrender.com](https://marks-predictor-lttt.onrender.com/) 🎉
+
 ## 🌟 Features
 
 - **🔮 Predictive Analytics**: Accurately forecasts student performance based on historical data.
@@ -57,9 +63,6 @@ To get a local copy of this project, follow these steps:
 
 5. **Visit** `http://localhost:5000` in your web browser. 🌐
 
-## 🌐 Live Demo
-
-Experience the application live at 👉 [marks-predictor-lttt.onrender.com](https://marks-predictor-lttt.onrender.com/) 🎉
 
 ## 🤝 Contribution
 
