@@ -43,12 +43,14 @@ To get a local copy of this project, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/Rizwansaifi571/End_To_End_DS-Project.git
+   git clone https://github.com/Rizwansaifi571/Student Performance Indicator
+.git
    ```
    
 2. **Navigate to the project directory**:
    ```bash
-   cd End_To_End_DS-Project
+   cd Student Performance Indicator
+
    ```
 
 3. **Install the required dependencies**:
